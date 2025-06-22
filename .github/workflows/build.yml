@@ -1,0 +1,26 @@
+name: CI
+
+on: [workflow_dispatch]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        with:
+          persist-credentials: false
+
+      - name: Install and Build
+        run: |
+          npm install
+          npm run-script lint
+
+      - name: Build and publish Docker image
+        if: github.ref == 'refs/heads/main'
+        uses: elgohr/Publish-Docker-Github-Action@33a481be3e179353cb7793a92b57cf9a6c985860 # v4
+        with:
+          name: jfdidev/oidc-server
+          username: jfdidev
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
