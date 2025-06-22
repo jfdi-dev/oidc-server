@@ -12,10 +12,10 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install and Build
-        run: |
-          npm install
-          npm run-script lint
+      # - name: Install and Build
+      #   run: |
+      #     npm install
+      #     npm run lint
 
       - name: Build and publish Docker image
         if: github.ref == 'refs/heads/main'

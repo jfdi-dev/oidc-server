@@ -1,7 +1,7 @@
 module.exports = {
-  extends: 'airbnb-base',
+  extends: "airbnb-base",
   rules: {
-    'comma-dangle': 0,
-    'arrow-parens': 0
-  }
+    "comma-dangle": 0,
+    "arrow-parens": 0,
+  },
 };
