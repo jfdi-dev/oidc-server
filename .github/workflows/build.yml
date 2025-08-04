@@ -24,3 +24,4 @@ jobs:
           name: jfdidev/oidc-server
           username: jfdidev
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          platforms: linux/amd64,linux/arm64
